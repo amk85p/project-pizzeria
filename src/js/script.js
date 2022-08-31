@@ -104,9 +104,6 @@
         select.menuProduct.priceElem
       );
       console.log(thisProduct.priceElem);
-
-      const formData = utils.serializeFormToObject(thisProduct.form);
-      console.log('FormData', formData);
     }
 
     initAccordion() {
@@ -187,7 +184,6 @@
             // check if the option is default
             if (option.default == true) {
               // reduce price variable
-              console.log('option is default');
 
               price -= option.price;
             }
