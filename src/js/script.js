@@ -63,6 +63,7 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
+      thisProduct.initAmountWidget();
       thisProduct.processOrder();
       console.log('new Product:', thisProduct);
     }
@@ -87,27 +88,33 @@
       thisProduct.accordionTrigger = thisProduct.element.querySelector(
         select.menuProduct.clickable
       );
-      console.log(thisProduct.accordionTrigger);
+      // console.log(thisProduct.accordionTrigger);
       thisProduct.form = thisProduct.element.querySelector(
         select.menuProduct.form
       );
-      console.log(thisProduct.form);
+      // console.log(thisProduct.form);
       thisProduct.formInputs = thisProduct.form.querySelectorAll(
         select.all.formInputs
       );
-      console.log(thisProduct.formInputs);
+      // console.log(thisProduct.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(
         select.menuProduct.cartButton
       );
-      console.log(thisProduct.cartButton);
+      // console.log(thisProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(
         select.menuProduct.priceElem
       );
-      console.log(thisProduct.priceElem);
+      // console.log(thisProduct.priceElem);
 
       thisProduct.imageWrapper = thisProduct.element.querySelector(
         select.menuProduct.imageWrapper
       );
+      // console.log(thisProduct.imageWrapper);
+
+      thisProduct.amountWidgetElem = thisProduct.element.querySelector(
+        select.menuProduct.amountWidget
+      );
+      console.log(thisProduct.amountWidgetElem);
     }
 
     initAccordion() {
@@ -136,9 +143,11 @@
         );
       });
     }
+
     initOrderForm() {
       const thisProduct = this;
       console.log(thisProduct);
+
       thisProduct.form.addEventListener('submit', function (event) {
         event.preventDefault();
         thisProduct.processOrder();
@@ -164,7 +173,7 @@
 
       // set price to default price
       let price = thisProduct.data.price;
-      console.log(price);
+
       // for every category (param)...
       for (let paramId in thisProduct.data.params) {
         // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
@@ -190,7 +199,6 @@
             // check if the option is default
             if (option.default) {
               // reduce price variable
-
               price -= option.price;
             }
           }
@@ -205,10 +213,94 @@
             }
           }
         }
-
-        // update calculated price in the HTML
-        thisProduct.priceElem.innerHTML = price;
       }
+      //multiply price by amount
+      price *= thisProduct.amountWidget.value;
+
+      // update calculated price in the HTML
+      thisProduct.priceElem.innerHTML = price;
+    }
+
+    initAmountWidget() {
+      const thisProduct = this;
+
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem = addEventListener('updated', function () {
+        thisProduct.processOrder();
+        console.log(thisProduct.amountWidgetElem);
+      });
+    }
+  }
+
+  class AmountWidget {
+    constructor(element) {
+      const thisWidget = this;
+      console.log('AmountWidget:', thisWidget);
+      console.log('constructor arguments:', element);
+      thisWidget.getElements(element);
+      thisWidget.setValue(thisWidget.input.value);
+      thisWidget.initActions();
+    }
+
+    getElements(element) {
+      const thisWidget = this;
+
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(
+        select.widgets.amount.input
+      );
+      thisWidget.linkDecrease = thisWidget.element.querySelector(
+        select.widgets.amount.linkDecrease
+      );
+      thisWidget.linkIncrease = thisWidget.element.querySelector(
+        select.widgets.amount.linkIncrease
+      );
+
+      thisWidget.setValue(thisWidget.input.value);
+    }
+
+    setValue(value) {
+      const thisWidget = this;
+
+      const newValue = parseInt(value);
+
+      // TODO: add validation
+      if (
+        thisWidget.value !== newValue &&
+        !isNaN(newValue) &&
+        newValue >= settings.amountWidget.defaultMin - 1 &&
+        newValue <= settings.amountWidget.defaultMax + 1
+      ) {
+        thisWidget.value = newValue;
+      }
+      // thisWidget.value = newValue;
+      thisWidget.input.value = thisWidget.value;
+      thisWidget.announce();
+    }
+
+    initActions() {
+      const thisWidget = this;
+
+      thisWidget.input.addEventListener('change', function () {
+        thisWidget.setValue(thisWidget.input.value);
+      });
+
+      thisWidget.linkDecrease.addEventListener('click', function (event) {
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value - 1);
+      });
+
+      thisWidget.linkIncrease.addEventListener('click', function (event) {
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value + 1);
+      });
+    }
+
+    announce() {
+      const thisWidget = this;
+
+      const event = new Event('updated');
+      thisWidget.element.dispatchEvent(event);
     }
   }
 
