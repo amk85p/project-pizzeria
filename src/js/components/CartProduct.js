@@ -42,16 +42,16 @@ class CartProduct {
     thisCartProduct.dom.amountWidget.addEventListener('updated', function () {
       thisCartProduct.amount = thisCartProduct.amountWidget.value;
 
-      // console.log('thisCartProduct.amount:', thisCartProduct.amount);
+      console.log('thisCartProduct.amount:', thisCartProduct.amount);
       thisCartProduct.price =
         thisCartProduct.priceSingle * thisCartProduct.amountWidget.value;
-      // console.log('thisCartProduct.price:', thisCartProduct.price);
+      console.log('thisCartProduct.price:', thisCartProduct.price);
       thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
     });
-    // console.log(
-    //   'thisCartProduct.dom.AmountWidget:',
-    //   thisCartProduct.dom.AmountWidget
-    // );
+    console.log(
+      'thisCartProduct.dom.AmountWidget:',
+      thisCartProduct.dom.AmountWidget
+    );
   }
 
   initActions() {

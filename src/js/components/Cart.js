@@ -46,7 +46,7 @@ class Cart {
   }
   initActions() {
     const thisCart = this;
-    console.log(thisCart);
+    // console.log(thisCart);
     thisCart.dom.toggleTrigger.addEventListener('click', function () {
       thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
     });
@@ -150,7 +150,7 @@ class Cart {
       payload.products.push(prod.getData());
     }
 
-    console.log(payload);
+    // console.log(payload);
 
     const options = {
       method: 'POST',
@@ -160,7 +160,7 @@ class Cart {
       body: JSON.stringify(payload),
     };
 
-    console.log(options);
+    // console.log(options);
 
     fetch(url, options)
       .then(function (response) {
