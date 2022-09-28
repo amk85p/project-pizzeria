@@ -177,7 +177,7 @@ class Product {
     thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
     thisProduct.amountWidgetElem.addEventListener('click', function () {
       thisProduct.processOrder();
-      // console.log(thisProduct.amountWidgetElem);
+      console.log(thisProduct.amountWidget);
     });
   }
 

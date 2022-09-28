@@ -14,6 +14,7 @@ class CartProduct {
     thisCartProduct.getElements(element);
     thisCartProduct.initActions();
     thisCartProduct.initAmountWidget();
+
     // console.log('thisCartProduct:', thisCartProduct);
     // console.log(menuProduct);
   }
@@ -39,6 +40,7 @@ class CartProduct {
     thisCartProduct.amountWidget = new AmountWidget(
       thisCartProduct.dom.amountWidget
     );
+    console.log('thisCartProduct.amountWidget', thisCartProduct.amountWidget);
     thisCartProduct.dom.amountWidget.addEventListener('updated', function () {
       thisCartProduct.amount = thisCartProduct.amountWidget.value;
 
