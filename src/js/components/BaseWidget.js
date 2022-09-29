@@ -19,7 +19,7 @@ class BaseWidget {
     const thisWidget = this;
 
     const newValue = thisWidget.parseValue(value);
-    console.log('newValue', newValue);
+    // console.log('newValue', newValue);
 
     // TODO: add validation
     if (
@@ -29,21 +29,21 @@ class BaseWidget {
     ) {
       thisWidget.correctValue = newValue;
       thisWidget.announce();
-      console.log('thisWidget.correctValue', thisWidget.correctValue);
+      // console.log('thisWidget.correctValue', thisWidget.correctValue);
       /**/
     }
     // thisWidget.correctValue = newValue;
     thisWidget.renderValue();
     // thisWidget.announce();
-    console.log('value', value);
-    console.log('newValue', newValue);
+    // console.log('value', value);
+    // console.log('newValue', newValue);
   }
 
   setValue(value) {
     const thisWidget = this;
 
     thisWidget.value = value;
-    console.log('setValue');
+    // console.log('setValue');
   }
 
   parseValue(value) {
@@ -69,7 +69,7 @@ class BaseWidget {
       bubbles: true,
     });
     thisWidget.dom.wrapper.dispatchEvent(event);
-    console.log(event);
+    // console.log(event);
   }
 }
 
