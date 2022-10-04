@@ -411,6 +411,7 @@ class Booking {
         );
 
         thisBooking.updateDOM();
+        thisBooking.resetTables();
 
         console.log('parsedResponse', parsedResponse);
       });
