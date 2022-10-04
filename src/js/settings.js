@@ -45,6 +45,10 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    starters: '.starters',
+    formSubmit: '.btn-secondary',
+    phone: 'input[type="tel"]',
+    address: 'input[type="text"]',
   },
   nav: {
     links: '.main-nav a',
@@ -124,8 +128,8 @@ export const settings = {
     products: 'products',
     orders: 'orders',
     // CODE ADDED START
-    booking: 'booking',
-    event: 'event',
+    booking: 'bookings',
+    event: 'events',
     dateStartParamKey: 'date_gte',
     dateEndParamKey: 'date_lte',
     notRepeatParam: 'repeat=false',

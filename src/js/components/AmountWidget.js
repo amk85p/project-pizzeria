@@ -10,7 +10,7 @@ class AmountWidget extends BaseWidget {
     thisWidget.setValue(thisWidget.dom.input.value);
     // thisWidget.value = settings.amountWidget.defaultValue;
 
-    console.log('thisWidget.value', thisWidget.value);
+    // console.log('thisWidget.value', thisWidget.value);
     thisWidget.initActions();
 
     // console.log('amountwidget', thisWidget);
