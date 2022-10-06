@@ -3,12 +3,16 @@ export const select = {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product',
     bookingWidget: '#template-booking-widget', // CODE ADDED
+    homeContainer: '#template-home-container', // CODE ADDED
   },
   containerOf: {
+    home: '#home-page',
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages', // CODE ADDED
-    booking: '.booking-wrapper', // CODE ADDED
+    booking: '.booking-wrapper',
+
+    // homepage: '#home-page', // CODE ADDED
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -54,6 +58,12 @@ export const select = {
     links: '.main-nav a',
   },
 
+  homeContainer: {
+    home: '#home',
+    buttonOne: '#buttonOne',
+    homepage: '.home-wrapper',
+    carousel: '.main-carousel',
+  },
   //new code end
 
   cart: {
@@ -150,6 +160,10 @@ export const templates = {
   // CODE ADDED START
   bookingWidget: Handlebars.compile(
     document.querySelector(select.templateOf.bookingWidget).innerHTML
+  ),
+
+  homeContainer: Handlebars.compile(
+    document.querySelector(select.templateOf.homeContainer).innerHTML
   ),
   // CODE ADDED END
 };

@@ -17,7 +17,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
+
     <link rel="stylesheet" href="vendor/range-slider.min.css" />
+    <link rel="stylesheet" href="vendor/flickity.css" media="screen" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -30,6 +32,7 @@
           </div>
           <!-- new code -->
           <div class="main-nav">
+            <a href="#home">Home</a>
             <a href="#order">Order</a>
             <a href="#booking">Booking</a>
           </div>
@@ -83,8 +86,13 @@
         </div>
       </div>
     </header>
-    <!-- new code -->
+
     <div id="pages">
+      <!-- new code -->
+      <section id="home">
+        <div id="home-page" class="home-wrapper container"></div>
+      </section>
+      <!-- end of new code -->
       <section id="order">
         <div id="product-list" class="product-list container"></div>
       </section>
@@ -92,7 +100,104 @@
         <div class="booking-wrapper container"></div>
       </section>
     </div>
-    <!-- end of new code -->
+    <script id="template-home-container" type="text/x-handlebars-template">
+      <div class='home container'>
+        <div class='box-wrapper'>
+          <!-- <a href='/#/order'> -->
+          <div class='button' id='buttonOne'>
+            <h2 class='page__title no-spacing'>order online</h2>
+            <p class='textbox'>Lorem ipsum dolor sit amet</p>
+          </div>
+          <!-- </a> -->
+          <div class='button' id='buttonTwo'>
+            <h2 class='page__title no-spacing'>book a table</h2>
+            <p class='textbox'>Lorem ipsum dolor sit amet</p>
+          </div>
+        </div>
+        <div class='box-wrapper'>
+          <div class='boxred'>
+            <h2 class='page__title no-spacing'>order online</h2>
+            <p>Lorem ipsum dolor sit amet</p>
+          </div>
+        </div>
+        <!-- Flickity HTML init -->
+        <div class='main-carousel' data-flickity='{ "autoPlay": true }'>
+          <div class='carousel-cell'>
+            <h1>Lorem ipsum</h1>
+            <p>
+              <em>Lorem ipsum dolor sit amet
+                <br />consectetur adipisicing elit.</em>
+            </p>
+          </div>
+          <div class='carousel-cell'>
+            <h1>Lorem ipsum</h1>
+            <p>
+              <em>Lorem ipsum dolor sit amet
+                <br />consectetur adipisicing elit.</em>
+            </p>
+          </div>
+          <div class='carousel-cell'>
+            <h1>Lorem ipsum</h1>
+            <p>
+              <em>Lorem ipsum dolor sit amet
+                <br />consectetur adipisicing elit.</em>
+            </p>
+          </div>
+          <div class='carousel-cell'>
+            <h1>Lorem ipsum</h1>
+            <p>
+              <em>Lorem ipsum dolor sit amet
+                <br />consectetur adipisicing elit.</em>
+            </p>
+          </div>
+          <div class='carousel-cell'>
+            <h1>Lorem ipsum</h1>
+            <p>
+              <em>Lorem ipsum dolor sit amet
+                <br />consectetur adipisicing elit.</em>
+            </p>
+          </div>
+        </div>
+
+        <div class='boxsmall-wrapper'>
+          <div id='img1'>
+            <div class='icons'>
+              <i class='fas fa-heart'></i><i class='fas fa-share-alt'></i>
+            </div>
+          </div>
+
+          <div id='img2'>
+            <div class='icons'>
+              <i class='fas fa-heart'></i><i class='fas fa-share-alt'></i>
+            </div>
+          </div>
+          <div id='img3'>
+            <div class='icons'>
+              <i class='fas fa-heart'></i><i class='fas fa-share-alt'></i>
+            </div>
+          </div>
+          <div id='img4'>
+            <div class='icons'>
+              <i class='fas fa-heart'></i><i class='fas fa-share-alt'></i>
+            </div>
+          </div>
+          <div id='img5'>
+            <div class='icons'>
+              <i class='fas fa-heart'></i><i class='fas fa-share-alt'></i>
+            </div>
+          </div>
+          <div id='img6'>
+            <div class='icons'>
+              <i class='fas fa-heart'></i><i class='fas fa-share-alt'></i>
+            </div>
+          </div>
+        </div>
+        <div class='socialicons'>
+          <i class='fab fa-instagram'></i>
+          <i class='fab fa-facebook-square'></i>
+        </div>
+      </div>
+    </script>
     <script id="template-cart-product" type="text/x-handlebars-template">
       <li>
         <div class='widget-amount'>
@@ -293,10 +398,11 @@
       </div>
     </script>
     <!-- end of new code -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
     <script src="vendor/range-slider.min.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <!-- <script src="unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script> -->
+    <script src="vendor/flickity.pkgd.js"></script>
     <script src="js/app.js" type="module"></script>
   </body>
 </html>
