@@ -61,6 +61,7 @@ export const select = {
   homeContainer: {
     home: '#home',
     buttonOne: '#buttonOne',
+    buttonTwo: '#buttonTwo',
     homepage: '.home-wrapper',
     carousel: '.main-carousel',
   },

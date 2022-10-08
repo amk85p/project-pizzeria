@@ -1,4 +1,4 @@
-import { templates } from '../settings.js';
+import { templates, select, classNames } from '../settings.js';
 
 class Home {
   constructor(element) {
@@ -23,19 +23,62 @@ class Home {
       'thisHome.dom.wrapper.innerHTML',
       thisHome.dom.wrapper.innerHTML
     );
-
-    thisHome.buttonOne = document.getElementById('buttonOne');
-    console.log(thisHome.buttonOne);
-
-    thisHome.buttonOne.addEventListener('click', function () {
-      console.log('button clicked');
-      location.replace('/#/order');
-    });
   }
 
   initWidgets() {
     const thisHome = this;
     console.log(thisHome);
+
+    thisHome.buttonOne = document.getElementById('buttonOne');
+    console.log(thisHome.buttonOne);
+    const pages = document.querySelector(select.containerOf.pages).children;
+    const navLinks = document.querySelectorAll(select.nav.links);
+    thisHome.buttonOne.addEventListener('click', function (event) {
+      console.log('button clicked');
+      location.replace('/#/order');
+      event.preventDefault();
+      for (let page of pages) {
+        if (page.id !== 'order') {
+          page.classList.remove(classNames.pages.active);
+          console.log(classNames.pages.active);
+        } else {
+          page.classList.add(classNames.pages.active);
+          console.log(classNames.pages.active);
+        }
+
+        for (let link of navLinks) {
+          link.classList.toggle(
+            classNames.nav.active,
+            link.getAttribute('href') == '#' + 'order'
+          );
+        }
+      }
+    });
+
+    thisHome.buttonTwo = document.getElementById('buttonTwo');
+    console.log(thisHome.buttonOne);
+
+    thisHome.buttonTwo.addEventListener('click', function (event) {
+      console.log('buttontwo clicked');
+      location.replace('/#/booking');
+      event.preventDefault();
+      for (let page of pages) {
+        if (page.id !== 'booking') {
+          page.classList.remove(classNames.pages.active);
+          console.log(classNames.pages.active);
+        } else {
+          page.classList.add(classNames.pages.active);
+          console.log(classNames.pages.active);
+        }
+
+        for (let link of navLinks) {
+          link.classList.toggle(
+            classNames.nav.active,
+            link.getAttribute('href') == '#' + 'booking'
+          );
+        }
+      }
+    });
   }
 }
 
