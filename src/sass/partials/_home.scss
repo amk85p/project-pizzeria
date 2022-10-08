@@ -129,7 +129,6 @@ h2 {
 
   .boxsmall-wrapper {
     display: flex;
-
     justify-content: space-between;
     padding-bottom: 10px;
     flex-wrap: wrap;
@@ -138,32 +137,36 @@ h2 {
       size: 1px;
       opacity: 0;
       color: #fff;
+      margin: 10px;
+    }
 
-      i {
-        margin: 5px;
+    :hover {
+      opacity: 0.8;
+
+      .icons {
+        width: 100%;
+        height: 100%;
+        color: $color-main;
+        // color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        transform: scale(2);
+        transition: all 1s;
       }
     }
   }
 
-  .boxsmall-wrapper:hover {
-    opacity: 0.8;
+  .icons :hover {
+    color: $color-main;
+    opacity: 1;
+    transition: all 1s;
+  }
 
-    .icons {
-      width: 100%;
-      height: 100%;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 1;
-      transform: scale(2);
-      transition: all 0.5s;
-
-      :hover {
-        color: $color-main;
-        opacity: 1;
-      }
-    }
+  i {
+    margin: 2px;
+    color: ffff;
   }
 
   #img1 {
