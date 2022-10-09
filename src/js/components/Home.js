@@ -54,7 +54,7 @@ class Home {
         }
       }
     });
-    //a
+
     thisHome.buttonTwo = document.getElementById('buttonTwo');
     console.log(thisHome.buttonOne);
 
